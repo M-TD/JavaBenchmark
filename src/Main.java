@@ -9,8 +9,14 @@ public class Main {
     public static ArrayList<Integer> listToTest = new ArrayList<>();
 
     public static void main(String[] args) {
+
         //create a list with data
-        createListToTest(25000,20);
+        try {
+            createListToTest(Integer.parseInt(args[0]),Integer.parseInt(args[1]));
+            System.out.println("Created testing list with a size of: " + args[1] + " and a starting number of " + args[0]);
+        }catch (Exception e){
+            System.err.println("Error within the arguments: " + e);
+        }
 
         //run the benchmark
         runBenchmark();
