@@ -10,3 +10,6 @@ simple benchmark for the raspberry pi using java forkjoinpool
 - e.g RaspberryPiBenchmark 2000 10
 
 - this will run the program with starting number 2000 and run it 10 times, each time doubling the value before it
+
+# Default values
+- if no arguments are added to the starting command, the program will run with its default values

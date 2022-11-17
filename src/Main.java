@@ -10,63 +10,81 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //create a list with data
-        try {
-            createListToTest(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
-            System.out.println("Created testing list with a size of: " + args[1] + " and a starting number of " + args[0]);
-        } catch (Exception e) {
-            System.err.println("Error within the arguments: " + e);
+        //check if data is added into the args, if start the benchmark with default values
+        if (args.length == 0){
+            createListToTest(1000, 12);
+        }else{
+            //create a list with data and catch errors if necessary
+            try {
+                createListToTest(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+                System.out.println("Created testing list with a size of: " + args[1] + " and a starting number of " + args[0]);
+            } catch (Exception e) {
+                System.err.println("Error within the arguments: " + e);
+            }
         }
+
 
         //run the benchmark
         runBenchmark();
     }
 
+    //function to create a list with values to test
     public static void createListToTest(int startingNumber, int numberOfLoops) {
+        //add the default value
         listToTest.add(startingNumber);
 
+        //create a temp variable
         int temp = startingNumber;
         int valueToCalculate;
 
+        //double the last value and add into the array
         for (int i = 2; i < numberOfLoops; i++) {
             valueToCalculate = temp * 2;
             listToTest.add(valueToCalculate);
             temp = valueToCalculate;
         }
 
+        //print the total list
         System.out.println(listToTest);
     }
 
+    //function to start the benchmark and print the time of how long it takes
     public static void runBenchmark() {
-        ArrayList<Long> result;
+        long totalTime = timeChecker.checkCommandTime(()->{
+            ArrayList<Long> result;
 
-        //go through each number and test them 10 times
-        for (int i : listToTest) {
-            result = new ArrayList<>();
-            //generate list with random numbers
-            int[] ints = generateList(1000000, i);
-            ArrayList<Integer> listWithInts = Arrays.stream(ints).boxed().collect(Collectors.toCollection(ArrayList::new));
+            //go through each number and test them 10 times
+            for (int i : listToTest) {
+                result = new ArrayList<>();
+                //generate list with random numbers
+                int[] ints = generateList(1000000, i);
+                ArrayList<Integer> listWithInts = Arrays.stream(ints).boxed().collect(Collectors.toCollection(ArrayList::new));
 
-            for (int j = 0; j < 10; j++) {
+                for (int j = 0; j < 10; j++) {
 
-                //sort the numbers and check how long it takes
-                long time = timeChecker.checkCommandTime(() -> {
-                    try {
-                        forkJoinSort(listWithInts);
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                });
+                    //sort the numbers and check how long it takes
+                    long time = timeChecker.checkCommandTime(() -> {
+                        try {
+                            forkJoinSort(listWithInts);
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+                    });
 
-                //print the amount of sorted numbers and how long it took to sort
-                result.add(time);
+                    //print the amount of sorted numbers and how long it took to sort
+                    result.add(time);
+                }
+
+                //calculate and print the average time in ms
+                System.out.println("time in ms of " + i + ": " + result);
             }
+        });
 
-            //calculate and print the average time in ms
-            System.out.println("time in ms of " + i + ": " + result);
-        }
+        //print the total time
+        System.out.println("Total time needed for executing benchmark: " + totalTime + " milliseconds");
     }
 
+    //function to sort a list with numbers using the java forkjoin method
     public static void forkJoinSort(ArrayList<Integer> arrayOfNumbers) throws Exception {
         //create a forkjoinpool and assign a newly created task to it
         ForkJoinPool forkJoinPool = ForkJoinPool.commonPool();
@@ -79,15 +97,19 @@ public class Main {
         int[] listToTest = newTask.get();
     }
 
+    //function to create a list with random numbers
     public static int[] generateList(int maxNumber, int maxSize) {
+        //create new empty list
         ArrayList<Integer> integers = new ArrayList<>();
         int number;
 
+        //add random numbers to the list
         for (int i = 0; i < maxSize; i++) {
             number = (int) Math.floor(Math.random() * (maxNumber + 1));
             integers.add(number);
         }
 
+        //return the list
         return Arrays.stream(integers.toArray(new Integer[0])).mapToInt(i -> i).toArray();
     }
 }
