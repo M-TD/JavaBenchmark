@@ -12,22 +12,26 @@ public class Main {
 
         //create a list with data
         try {
-            createListToTest(Integer.parseInt(args[0]),Integer.parseInt(args[1]));
+            createListToTest(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
             System.out.println("Created testing list with a size of: " + args[1] + " and a starting number of " + args[0]);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.err.println("Error within the arguments: " + e);
         }
 
         //run the benchmark
         runBenchmark();
-
     }
 
-    public static void createListToTest(int startingNumber, int numberOfLoops){
+    public static void createListToTest(int startingNumber, int numberOfLoops) {
         listToTest.add(startingNumber);
 
-        for (int i = 1; i < numberOfLoops; i++) {
-            listToTest.add(startingNumber*i*2);
+        int temp = startingNumber;
+        int valueToCalculate;
+
+        for (int i = 2; i < numberOfLoops; i++) {
+            valueToCalculate = temp * 2;
+            listToTest.add(valueToCalculate);
+            temp = valueToCalculate;
         }
 
         System.out.println(listToTest);
@@ -75,20 +79,15 @@ public class Main {
         int[] listToTest = newTask.get();
     }
 
-    public static int[] generateList(int maxNumber, int maxSize){
+    public static int[] generateList(int maxNumber, int maxSize) {
         ArrayList<Integer> integers = new ArrayList<>();
         int number;
 
         for (int i = 0; i < maxSize; i++) {
-            number = (int) Math.floor(Math.random()*(maxNumber+1));
+            number = (int) Math.floor(Math.random() * (maxNumber + 1));
             integers.add(number);
         }
 
-        return Arrays.stream(integers.toArray(new Integer[0])).mapToInt(i->i).toArray();
+        return Arrays.stream(integers.toArray(new Integer[0])).mapToInt(i -> i).toArray();
     }
-
-
 }
-
-
-
