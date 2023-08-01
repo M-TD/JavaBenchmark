@@ -9,6 +9,17 @@ public class Main {
     public static ArrayList<Integer> listToTest = new ArrayList<>();
 
     public static void main(String[] args) {
+        String introText = "     ____.                     __________                     .__                          __    \n" +
+                "    |    |____ ___  _______    \\______   \\ ____   ____   ____ |  |__   _____ _____ _______|  | __\n" +
+                "    |    \\__  \\\\  \\/ /\\__  \\    |    |  _// __ \\ /    \\_/ ___\\|  |  \\ /     \\\\__  \\\\_  __ \\  |/ /\n" +
+                "/\\__|    |/ __ \\\\   /  / __ \\_  |    |   \\  ___/|   |  \\  \\___|   Y  \\  Y Y  \\/ __ \\|  | \\/    < \n" +
+                "\\________(____  /\\_/  (____  /  |______  /\\___  >___|  /\\___  >___|  /__|_|  (____  /__|  |__|_ \\\n" +
+                "              \\/           \\/          \\/     \\/     \\/     \\/     \\/      \\/     \\/           \\/";
+        String subText = " -----------------------------------> By M-TD Copyright 2023 <-----------------------------------\n";
+
+        //show intro text
+        System.out.println(introText);
+        System.out.println(subText);
 
         //check if data is added into the args, if start the benchmark with default values
         if (args.length == 0){
@@ -22,7 +33,6 @@ public class Main {
                 System.err.println("Error within the arguments: " + e);
             }
         }
-
 
         //run the benchmark
         runBenchmark();
@@ -45,6 +55,7 @@ public class Main {
         }
 
         //print the total list
+        System.out.println("Generated a list with numbers to test:");
         System.out.println(listToTest);
     }
 
