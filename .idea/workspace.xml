@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8666f31e-9294-4938-8a11-981aae317f93" name="Changes" comment="changed the way the test list is made">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="8666f31e-9294-4938-8a11-981aae317f93" name="Changes" comment="changed readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TimeChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TimeChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sortTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sortTask.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +24,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "M-TD"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="2f536646-895d-43f9-8cdc-e1009697db58" />
+        <option name="url" value="https://github.com/M-TD/RaspberryPiBenchmark.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -105,7 +119,23 @@
       <option name="project" value="LOCAL" />
       <updated>1668681511516</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="renamed project, added menu title">
+      <option name="closed" value="true" />
+      <created>1690913788293</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690913788293</updated>
+    </task>
+    <task id="LOCAL-00005" summary="changed readme">
+      <option name="closed" value="true" />
+      <created>1690913907698</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1690913907698</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +153,8 @@
     <MESSAGE value="first setup" />
     <MESSAGE value="added args functionality, added exception catching for the args" />
     <MESSAGE value="changed the way the test list is made" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed the way the test list is made" />
+    <MESSAGE value="renamed project, added menu title" />
+    <MESSAGE value="changed readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed readme" />
   </component>
 </project>

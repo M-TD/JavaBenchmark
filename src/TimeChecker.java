@@ -1,5 +1,4 @@
 import java.time.Instant;
-import java.time.Duration;
 
 public class TimeChecker {
     public TimeChecker(){

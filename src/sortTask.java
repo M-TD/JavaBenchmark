@@ -69,5 +69,4 @@ public class sortTask extends RecursiveTask<int[]> {
         while (rightPos < right.length) result[mergedPos++] = right[rightPos++];
         return result;
     }
-
 }

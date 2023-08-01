@@ -1,3 +1,6 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ForkJoinPool;
@@ -6,25 +9,36 @@ import java.util.stream.Collectors;
 public class Main {
 
     public static TimeChecker timeChecker = new TimeChecker();
-    public static ArrayList<Integer> listToTest = new ArrayList<>();
+    public static BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) {
+        boolean keepRunning = true;
+
         String introText = "     ____.                     __________                     .__                          __    \n" +
                 "    |    |____ ___  _______    \\______   \\ ____   ____   ____ |  |__   _____ _____ _______|  | __\n" +
                 "    |    \\__  \\\\  \\/ /\\__  \\    |    |  _// __ \\ /    \\_/ ___\\|  |  \\ /     \\\\__  \\\\_  __ \\  |/ /\n" +
                 "/\\__|    |/ __ \\\\   /  / __ \\_  |    |   \\  ___/|   |  \\  \\___|   Y  \\  Y Y  \\/ __ \\|  | \\/    < \n" +
                 "\\________(____  /\\_/  (____  /  |______  /\\___  >___|  /\\___  >___|  /__|_|  (____  /__|  |__|_ \\\n" +
                 "              \\/           \\/          \\/     \\/     \\/     \\/     \\/      \\/     \\/           \\/";
+
         String subText = " -----------------------------------> By M-TD Copyright 2023 <-----------------------------------\n";
+
+        String menuOptions = "Menu Options:\n" +
+                " - R: Run the benchmark\n" +
+                " - C: Run a custom benchmark\n" +
+                " - H: Show this help menu\n" +
+                " - A: Show info about this program\n" +
+                " - Q: Quit the program\n";
+
+        String exitMessage = "Thank you for using this program!";
 
         //show intro text
         System.out.println(introText);
         System.out.println(subText);
+        System.out.println(menuOptions);
 
         //check if data is added into the args, if start the benchmark with default values
-        if (args.length == 0){
-            createListToTest(1000, 12);
-        }else{
+        if (args.length != 0){
             //create a list with data and catch errors if necessary
             try {
                 createListToTest(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
@@ -34,12 +48,68 @@ public class Main {
             }
         }
 
-        //run the benchmark
-        runBenchmark();
+        while (keepRunning){
+            //get input
+            String input = null;
+            try {
+                input = consoleReader.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            //error checking
+            if (input == null){
+                throw new NullPointerException("Input is null");
+            }
+
+            switch (input.toLowerCase()) {
+                case "q" -> {
+                    //exit the program
+                    System.out.println("Exiting program...");
+                    System.out.println(exitMessage);
+                    keepRunning = false;
+                }
+                case "r" -> {
+                    //run the benchmark
+                    System.out.println("Running Benchmark...");
+
+                    //create new list and run benchmark
+                    runBenchmark(createListToTest(1000, 12));
+                }
+                case "a" -> {
+                    //show about
+                    System.out.println("Program made by M TD, for use in Java supported systems.");
+                    System.out.println("M-_-TD on GitHub: https://github.com/M-TD");
+                    System.out.println("Copyright M-_-TD 2023\n");
+                }
+                case "c" -> {
+                    try {
+                        //run custom program
+                        System.out.println("What starting number do you want to use?");
+                        String startingNumber = consoleReader.readLine();
+                        System.out.println("How many times does the starting number need to double in the list?");
+                        String doublingNumber = consoleReader.readLine();
+
+                        //create new list and run benchmark
+                        runBenchmark(createListToTest(Integer.parseInt(startingNumber), Integer.parseInt(doublingNumber)));
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+                case "h" -> {
+                    //show help menu
+                    System.out.println(menuOptions);
+                }
+                default -> System.out.println("Unrecognized input given!");
+            }
+        }
     }
 
     //function to create a list with values to test
-    public static void createListToTest(int startingNumber, int numberOfLoops) {
+    public static ArrayList<Integer> createListToTest(int startingNumber, int numberOfLoops) {
+        //create new list
+        ArrayList<Integer> listToTest = new ArrayList<>();
+
         //add the default value
         listToTest.add(startingNumber);
 
@@ -57,11 +127,14 @@ public class Main {
         //print the total list
         System.out.println("Generated a list with numbers to test:");
         System.out.println(listToTest);
+
+        return listToTest;
     }
 
     //function to start the benchmark and print the time of how long it takes
-    public static void runBenchmark() {
+    public static void runBenchmark(ArrayList<Integer> listToTest) {
         long totalTime = timeChecker.checkCommandTime(()->{
+
             ArrayList<Long> result;
 
             //go through each number and test them 10 times
