@@ -19,6 +19,3 @@ Program options can be entered upper- and lowercase.
 
 ### With Arguments
 - Execute the program by typing the name of the program and add after it the starting number and the number of times it should double the value before it.
-
-# Default values
-- If no arguments are added to the starting command, the program will run with its default values.
