@@ -1,13 +1,24 @@
-# Simple Java Benchmark
-simple benchmark using java forkjoinpool
+# Simple Multi-Threading Java Benchmark
+Simple Multi-Threading benchmark using java forkjoinpool.
 
 # Starting the program
-- clone the program
-- compile the program using the java compiler
+- Clone the program
+- Compile the program using the java compiler (the project uses java version 17)
 
-- execute the program by typing the name of the program and add after it the starting number and the number of times it should double the value before it
+### No Arguments
+- This will run the program and show you a menu with run options to enter.
 
-- this will run the program with starting number 2000 and run it 10 times, each time doubling the value before it
+#### Program Options: 
+- R: This command will run the benchmark with default settings
+- C: This command will allow you to create a custom benchmark and run it
+- H: This command will show this help menu
+- A: This command will show info about this program
+- Q: This command will quit the program
+
+Program options can be entered upper- and lowercase.
+
+### With Arguments
+- Execute the program by typing the name of the program and add after it the starting number and the number of times it should double the value before it.
 
 # Default values
-- if no arguments are added to the starting command, the program will run with its default values
+- If no arguments are added to the starting command, the program will run with its default values.

@@ -83,6 +83,7 @@ public class Main {
                     //show about
                     System.out.println("Program made by M TD, for use in Java supported systems.");
                     System.out.println("M-_-TD on GitHub: https://github.com/M-TD");
+                    System.out.println("Consider supporting me: https://www.buymeacoffee.com/mteda");
                     System.out.println("Copyright M-_-TD 2023\n");
                 }
                 case "c" -> {
