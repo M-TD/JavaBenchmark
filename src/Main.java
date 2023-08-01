@@ -14,21 +14,24 @@ public class Main {
     public static void main(String[] args) {
         boolean keepRunning = true;
 
-        String introText = "     ____.                     __________                     .__                          __    \n" +
-                "    |    |____ ___  _______    \\______   \\ ____   ____   ____ |  |__   _____ _____ _______|  | __\n" +
-                "    |    \\__  \\\\  \\/ /\\__  \\    |    |  _// __ \\ /    \\_/ ___\\|  |  \\ /     \\\\__  \\\\_  __ \\  |/ /\n" +
-                "/\\__|    |/ __ \\\\   /  / __ \\_  |    |   \\  ___/|   |  \\  \\___|   Y  \\  Y Y  \\/ __ \\|  | \\/    < \n" +
-                "\\________(____  /\\_/  (____  /  |______  /\\___  >___|  /\\___  >___|  /__|_|  (____  /__|  |__|_ \\\n" +
-                "              \\/           \\/          \\/     \\/     \\/     \\/     \\/      \\/     \\/           \\/";
+        String introText = """
+                     ____.                     __________                     .__                          __   \s
+                    |    |____ ___  _______    \\______   \\ ____   ____   ____ |  |__   _____ _____ _______|  | __
+                    |    \\__  \\\\  \\/ /\\__  \\    |    |  _// __ \\ /    \\_/ ___\\|  |  \\ /     \\\\__  \\\\_  __ \\  |/ /
+                /\\__|    |/ __ \\\\   /  / __ \\_  |    |   \\  ___/|   |  \\  \\___|   Y  \\  Y Y  \\/ __ \\|  | \\/    <\s
+                \\________(____  /\\_/  (____  /  |______  /\\___  >___|  /\\___  >___|  /__|_|  (____  /__|  |__|_ \\
+                              \\/           \\/          \\/     \\/     \\/     \\/     \\/      \\/     \\/           \\/""";
 
         String subText = " -----------------------------------> By M-TD Copyright 2023 <-----------------------------------\n";
 
-        String menuOptions = "Menu Options:\n" +
-                " - R: Run the benchmark\n" +
-                " - C: Run a custom benchmark\n" +
-                " - H: Show this help menu\n" +
-                " - A: Show info about this program\n" +
-                " - Q: Quit the program\n";
+        String menuOptions = """
+                Menu Options:
+                 - R: Run the benchmark
+                 - C: Run a custom benchmark
+                 - H: Show this help menu
+                 - A: Show info about this program
+                 - Q: Quit the program
+                """;
 
         String exitMessage = "Thank you for using this program!";
 
@@ -50,7 +53,7 @@ public class Main {
 
         while (keepRunning){
             //get input
-            String input = null;
+            String input;
             try {
                 input = consoleReader.readLine();
             } catch (IOException e) {
