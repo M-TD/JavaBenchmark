@@ -137,7 +137,6 @@ public class Main {
     //function to start the benchmark and print the time of how long it takes
     public static void runBenchmark(ArrayList<Integer> listToTest) {
         long totalTime = timeChecker.checkCommandTime(()->{
-
             ArrayList<Long> result;
 
             //go through each number and test them 10 times
