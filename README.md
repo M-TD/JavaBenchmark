@@ -1,7 +1,7 @@
 # Simple Multi-Threading Java Benchmark
 Simple Multi-Threading benchmark using java forkjoinpool.
 
-# Starting the program
+### Starting the program
 - Clone the program
 - Compile the program using the java compiler (the project uses java version 17)
 
@@ -19,3 +19,6 @@ Program options can be entered upper- and lowercase.
 
 ### With Arguments
 - Execute the program by typing the name of the program and add after it the starting number and the number of times it should double the value before it.
+
+### Logging
+- After running a benchmark a log file will be created with data from the benchmark.
